@@ -1,61 +1,122 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# **JahitlnAja – Platform Jasa Jahit Online Berbasis Laravel**
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+---
 
-## About Laravel
+## **Nama & NIM**
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Nama:** Asri  
+- **NIM:** D0223532
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## **Mata Kuliah & Tahun**
 
-## Learning Laravel
+- **Mata Kuliah:** Framework Berbasis Web (FWB)  
+- **Tahun:** 2025
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## **Role dan Fitur-fiturnya**
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 1. **Admin**
+- Kelola data pengguna (penjahit & pelanggan)  
+- Kelola jasa jahit  
+- Verifikasi pembayaran  
+- Monitoring pesanan dan ulasan
 
-## Laravel Sponsors
+### 2. **Penjahit**
+- Tambah/edit/hapus jasa jahit  
+- Konfirmasi pesanan masuk  
+- Update status pengerjaan jahitan
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 3. **Pelanggan**
+- Registrasi dan login  
+- Lihat daftar jasa jahit  
+- Pesan jasa dan upload detail ukuran/desain  
+- Lacak status pesanan  
+- Memberikan ulasan dan rating
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+## **Tabel-Tabel Database beserta Field dan Tipe Datanya**
 
-## Contributing
+### **Tabel: users**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+| Nama Field  | Tipe Data | Keterangan                 |
+| ----------- | --------- | -------------------------- |
+| id          | INT       | Primary key                |
+| name        | VARCHAR   | Nama pengguna              |
+| email       | VARCHAR   | Email unik                 |
+| password    | VARCHAR   | Password hash              |
+| role        | ENUM      | admin, penjahit, pelanggan |
+| created_at  | TIMESTAMP | Waktu dibuat               |
+| updated_at  | TIMESTAMP | Waktu diperbarui           |
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### **Tabel: jasas**
 
-## Security Vulnerabilities
+| Nama Field  | Tipe Data | Keterangan                   |
+| ----------- | --------- | ---------------------------- |
+| id          | INT       | Primary key                  |
+| user_id     | INT       | FK ke tabel users (penjahit) |
+| nama_jasa   | VARCHAR   | Nama jasa jahit              |
+| deskripsi   | TEXT      | Penjelasan jasa              |
+| harga       | INTEGER   | Harga jasa                   |
+| foto        | VARCHAR   | Path foto portofolio         |
+| created_at  | TIMESTAMP |                              |
+| updated_at  | TIMESTAMP |                              |
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+### **Tabel: orders**
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+| Nama Field  | Tipe Data | Keterangan                  |
+| ----------- | --------- | --------------------------- |
+| id          | INT       | Primary key                 |
+| user_id     | INT       | FK ke pelanggan             |
+| jasa_id     | INT       | FK ke jasa jahit            |
+| ukuran      | TEXT      | Ukuran pakaian              |
+| desain      | VARCHAR   | Path file desain (opsional) |
+| alamat      | TEXT      | Alamat pengiriman           |
+| status      | ENUM      | Menunggu, Diproses, Selesai |
+| created_at  | TIMESTAMP |                             |
+| updated_at  | TIMESTAMP |                             |
+
+---
+
+### **Tabel: payments**
+
+| Nama Field      | Tipe Data | Keterangan            |
+| --------------- | --------- | --------------------- |
+| id              | INT       | Primary key           |
+| order_id        | INT       | FK ke tabel orders    |
+| bukti_transfer  | VARCHAR   | Path bukti transfer   |
+| status          | ENUM      | Pending, Dikonfirmasi |
+| created_at      | TIMESTAMP |                       |
+| updated_at      | TIMESTAMP |                       |
+
+---
+
+### **Tabel: reviews**
+
+| Nama Field  | Tipe Data | Keterangan          |
+| ----------- | --------- | ------------------- |
+| id          | INT       | Primary key         |
+| jasa_id     | INT       | FK ke tabel jasa    |
+| user_id     | INT       | FK ke pelanggan     |
+| rating      | INTEGER   | Nilai bintang (1–5) |
+| komentar    | TEXT      | Ulasan              |
+| created_at  | TIMESTAMP |                     |
+| updated_at  | TIMESTAMP |                     |
+
+---
+
+## **Jenis Relasi dan Tabel yang Berelasi**
+
+- `users` → `jasas` (One to Many)  
+- `users` → `orders` (One to Many)  
+- `jasas` → `orders` (One to Many)  
+- `orders` → `payments` (One to One)  
+- `jasas` → `reviews` (One to Many)  
+- `users` → `reviews` (One to Many)
