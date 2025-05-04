@@ -1,18 +1,18 @@
-# **JahitlnAja – Platform Jasa Jahit Online Berbasis Laravel**
+<h1 align="center">JahitlnAja</h1>
 
----
+<h3 align="center">Platform Jasa Jahit Online</h3>
 
-## **Nama & NIM**
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/191c51a4-97a2-451a-84ee-6e6527d81644" width="200" alt="Logo Universitas"/>
+</p>
 
-- **Nama:** Asri  
-- **NIM:** D0223532
+<h3 align="center">Asri</h3>
 
----
+<h4 align="center">D0223532</h4>
 
-## **Mata Kuliah & Tahun**
+<h4 align="center">Framework Web Based</h4>
 
-- **Mata Kuliah:** Framework Berbasis Web (FWB)  
-- **Tahun:** 2025
+<h4 align="center">2025</h4>
 
 ---
 
