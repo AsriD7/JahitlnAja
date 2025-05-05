@@ -40,6 +40,20 @@
 
 ## **Tabel-Tabel Database beserta Field dan Tipe Datanya**
 
+### **Tabel: users**
+
+| Nama Field  | Tipe Data | Keterangan                 |
+| ----------- | --------- | -------------------------- |
+| id          | INT       | Primary key                |
+| name        | VARCHAR   | Nama pengguna              |
+| email       | VARCHAR   | Email unik                 |
+| password    | VARCHAR   | Password hash              |
+| role        | ENUM      | admin, penjahit, pelanggan |
+| created_at  | TIMESTAMP | Waktu dibuat               |
+| updated_at  | TIMESTAMP | Waktu diperbarui           |
+
+---
+
 ### **Tabel: jasas**
 
 | Nama Field  | Tipe Data | Keterangan                   |
