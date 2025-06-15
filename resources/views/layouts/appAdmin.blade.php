@@ -33,7 +33,7 @@
         <h4 class="text-white text-center py-3">Admin Panel</h4>
         <a href="{{ route('admin.dashboard') }}">Dashboard</a>
         <a href="{{ route('admin.users') }}">Manajemen Akun</a>
-        <a href="{{ route('admin.payments') }}">Verifikasi Pembayaran</a>
+        {{-- <a href="{{ route('admin.payments') }}">Verifikasi Pembayaran</a> --}}
         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
             @csrf

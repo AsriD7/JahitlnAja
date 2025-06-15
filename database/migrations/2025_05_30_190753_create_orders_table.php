@@ -13,9 +13,14 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('product_id')->constrained()->onDelete('cascade');
-            $table->enum('status', ['menunggu', 'proses', 'selesai'])->default('menunggu');
+            $table->foreignId('customer_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('tailor_id')->constrained()->onDelete('cascade');
+            $table->foreignId('service_id')->constrained()->onDelete('cascade');
+            $table->text('measurement');
+            $table->string('reference_image')->nullable(); // Optional reference image for measurements
+            $table->decimal('total_price', 8, 2);
+            $table->string('status')->default('pending'); // pending, accepted, in_progress, completed
+            $table->string('payment_proof')->nullable();
             $table->timestamps();
         });
     }

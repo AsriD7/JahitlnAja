@@ -16,7 +16,6 @@ class ProfileController extends Controller
     public function edit() {
     $user = Auth::user();
     $profile = $user->profile;
-    // $layout = $user->role === 'penjahit' ? 'layouts.appPenjahit' : 'layouts.appPelanggan';
 
     return view('pelanggan.edit', compact('user', 'profile'));
 }
@@ -47,7 +46,6 @@ class ProfileController extends Controller
     }
 
     public function passwordForm() {
-        // $layout = $user->role === 'penjahit' ? 'layouts.appPenjahit' : 'layouts.appPelanggan';
         return view('pelanggan.editPW');
     }
 

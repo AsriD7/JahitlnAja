@@ -35,9 +35,9 @@
                     <i class="bi bi-person-circle me-2"></i>
                     <span>My Profile</span>
                   </a>
-                  <a class="dropdown-item d-flex align-items-center" href="orders.html">
+                  {{-- <a class="dropdown-item d-flex align-items-center" href="orders.html">
                     <i class="bi bi-bag-check me-2"></i>
-                    <span>My Orders</span>
+                    <span>My Orders</span> --}}
                   </a>
                   {{-- <a class="dropdown-item d-flex align-items-center" href="wishlist.html">
                     <i class="bi bi-heart me-2"></i>

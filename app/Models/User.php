@@ -50,6 +50,11 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
+    public function tailor()
+    {
+        return $this->hasOne(Tailor::class, 'user_id');
+    }
+
     /**
      * Get the attributes that should be cast.
      *

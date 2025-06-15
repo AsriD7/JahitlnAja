@@ -19,7 +19,7 @@
               <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="200">
                 <div class="category-card">
                   <img src="{{asset('FashionStore')}}/assets/img/BAJU.PNG" alt="Women's Dresses" class="img-fluid" loading="lazy">
-                  <a href="#" class="category-link">
+                  <a href="{{ route('customer.index') }}" class="category-link">
                     ATASAN <i class="bi bi-arrow-right"></i>
                   </a>
                 </div>
@@ -29,7 +29,7 @@
               <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="300">
                 <div class="category-card">
                   <img src="{{asset('FashionStore')}}/assets/img/BAWAHAN.PNG" alt="Women's Tops" class="img-fluid" loading="lazy">
-                  <a href="#" class="category-link">
+                  <a href="{{ route('customer.index') }}" class="category-link">
                     BAWAHAN <i class="bi bi-arrow-right"></i>
                   </a>
                 </div>
@@ -39,7 +39,7 @@
               <div class="col-12 col-md-4" data-aos="fade-up" data-aos-delay="400">
                 <div class="category-card">
                   <img src="{{asset('FashionStore')}}/assets/img/TERUSAN.PNG" alt="Women's Accessories" class="img-fluid" loading="lazy">
-                  <a href="#" class="category-link">
+                  <a href="{{ route('customer.index') }}" class="category-link">
                     TERUSAN <i class="bi bi-arrow-right"></i>
                   </a>
                 </div>

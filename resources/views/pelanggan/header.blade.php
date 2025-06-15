@@ -97,7 +97,7 @@
                     <i class="bi bi-person-circle me-2"></i>
                     <span>My Profile</span>
                   </a>
-                  <a class="dropdown-item d-flex align-items-center" href="orders.html">
+                  <a class="dropdown-item d-flex align-items-center" href="{{ route('customer.orders') }}">
                     <i class="bi bi-bag-check me-2"></i>
                     <span>My Orders</span>
                   </a>
@@ -211,7 +211,7 @@
       <div class="container-fluid container-xl position-relative">
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="{{ route('pelanggan.dashboard') }}" class="active">Home</a></li>
+            <li><a href="{{ route('pelanggan.dashboard') }}">Home</a></li>
             <li><a href="{{ route('about') }}">About</a></li>
             {{-- <li><a href="category.html">Category</a></li>
             <li><a href="product-details.html">Product Details</a></li>

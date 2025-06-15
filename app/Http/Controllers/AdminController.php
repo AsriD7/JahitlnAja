@@ -18,17 +18,6 @@ class AdminController extends Controller
         return view('admin.users.index', compact('penjahits', 'pelanggans'));
     }
 
-    public function payments()
-    {
-        $payments = Payment::with('order')->get();
-        return view('admin.payments.index', compact('payments'));
-    }
-
-    public function verifyPayment(Payment $payment)
-    {
-        $payment->update(['status' => 'verified']);
-        return redirect()->back()->with('success', 'Pembayaran diverifikasi');
-    }
     public function createUser()
     {
         return view('admin.users.create');

@@ -9,23 +9,20 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Order extends Model
 {
-    use HasFactory;
+    protected $fillable = ['customer_id', 'tailor_id', 'service_id', 'measurement','reference_image', 'total_price', 'status', 'payment_proof'];
 
-    protected $fillable = ['user_id', 'product_id', 'status'];
-
-    public function user(): BelongsTo
+    public function customer()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'customer_id');
     }
 
-    public function product(): BelongsTo
+    public function tailor()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Tailor::class);
     }
 
-    public function payment(): HasOne
+    public function service()
     {
-        return $this->hasOne(Payment::class);
+        return $this->belongsTo(Service::class);
     }
 }
-

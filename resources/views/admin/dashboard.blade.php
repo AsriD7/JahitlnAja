@@ -1,3 +1,6 @@
+<div>
+    <!-- An unexamined life is not worth living. - Socrates -->
+</div>
 @extends('layouts.appAdmin')
 
 @section('content')
@@ -13,7 +16,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        {{-- <div class="col-md-4">
             <div class="card text-white bg-success mb-3">
                 <div class="card-body">
                     <h5 class="card-title">Verifikasi Pembayaran</h5>
@@ -21,7 +24,7 @@
                     <a href="{{ route('admin.payments') }}" class="btn btn-light">Verifikasi</a>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
 @endsection

@@ -1,4 +1,4 @@
-@extends('layouts.appPelanggan')
+@extends('layouts.appPenjahit')
 
 @section('title', 'Dashboard Penjahit')
 
