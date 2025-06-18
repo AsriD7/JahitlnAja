@@ -25,7 +25,7 @@
 
           <div class="col-lg-2 col-md-6 col-sm-6">
             <div class="footer-widget">
-              <h4>Shop</h4>
+              {{-- <h4>Shop</h4>
               <ul class="footer-links">
                 <li><a href="category.html">New Arrivals</a></li>
                 <li><a href="category.html">Bestsellers</a></li>
@@ -33,13 +33,13 @@
                 <li><a href="category.html">Men's Clothing</a></li>
                 <li><a href="category.html">Accessories</a></li>
                 <li><a href="category.html">Sale</a></li>
-              </ul>
+              </ul> --}}
             </div>
           </div>
 
           <div class="col-lg-2 col-md-6 col-sm-6">
             <div class="footer-widget">
-              <h4>Support</h4>
+              {{-- <h4>Support</h4>
               <ul class="footer-links">
                 <li><a href="support.html">Help Center</a></li>
                 <li><a href="account.html">Order Status</a></li>
@@ -47,7 +47,7 @@
                 <li><a href="return-policy.html">Returns &amp; Exchanges</a></li>
                 <li><a href="#">Size Guide</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
-              </ul>
+              </ul> --}}
             </div>
           </div>
 
@@ -57,15 +57,15 @@
               <div class="footer-contact">
                 <div class="contact-item">
                   <i class="bi bi-geo-alt"></i>
-                  <span>123 Fashion Street, New York, NY 10001</span>
+                  <span>Petoosang, Alu, Kabupaten Polewali Mandar, Sulawesi Barat 91325</span>
                 </div>
                 <div class="contact-item">
                   <i class="bi bi-telephone"></i>
-                  <span>+1 (555) 123-4567</span>
+                  <span>+62 851 5911 2706</span>
                 </div>
                 <div class="contact-item">
                   <i class="bi bi-envelope"></i>
-                  <span>hello@example.com</span>
+                  <span>JahitlnAja@example.com</span>
                 </div>
                 <div class="contact-item">
                   <i class="bi bi-clock"></i>
@@ -73,7 +73,7 @@
                 </div>
               </div>
 
-              <div class="app-buttons mt-4">
+              {{-- <div class="app-buttons mt-4">
                 <a href="#" class="app-btn">
                   <i class="bi bi-apple"></i>
                   <span>App Store</span>
@@ -83,7 +83,7 @@
                   <span>Google Play</span>
                 </a>
               </div>
-            </div>
+            </div> --}}
           </div>
         </div>
       </div>

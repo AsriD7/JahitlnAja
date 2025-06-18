@@ -37,8 +37,8 @@
                   </a>
                   {{-- <a class="dropdown-item d-flex align-items-center" href="orders.html">
                     <i class="bi bi-bag-check me-2"></i>
-                    <span>My Orders</span> --}}
-                  </a>
+                    <span>My Orders</span>
+                  </a> --}}
                   {{-- <a class="dropdown-item d-flex align-items-center" href="wishlist.html">
                     <i class="bi bi-heart me-2"></i>
                     <span>My Wishlist</span>
@@ -149,13 +149,13 @@
       <div class="container-fluid container-xl position-relative">
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="about.html">About</a></li>
+            <li><a href="{{ route('tailor.index') }}" >Home</a></li>
+            <li><a href="{{ route('penjahit.about') }}">About</a></li>
             {{-- <li><a href="category.html">Category</a></li>
             <li><a href="product-details.html">Product Details</a></li>
             <li><a href="cart.html">Cart</a></li>
             <li><a href="checkout.html">Checkout</a></li> --}}
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="{{ route('penjahit.contact') }}">Contact</a></li>
 
           </ul>
         </nav>

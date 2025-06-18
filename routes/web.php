@@ -27,9 +27,13 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 Route::middleware(['auth', 'role:penjahit'])->group(function () {
-    Route::view('/penjahi', 'penjahit.dashboard')->name('penjahit.dashboard');
-    Route::view('/contact', 'penjahit.contact')->name('contact');
-    Route::view('/about', 'penjahit.about')->name('about');
+    Route::get('/penjahit', [TailorController::class, 'index'])->name('tailor.index');
+    Route::get('/penjahit/profile', [TailorController::class, 'showProfile'])->name('tailor.showProfile');
+    Route::post('/penjahit/profile', [TailorController::class, 'profile'])->name('tailor.profile');
+    Route::post('/penjahit/order/{order}/status', [TailorController::class, 'updateStatus'])->name('tailor.updateStatus');
+
+    Route::view('/penjahit/contact', 'penjahit.contact')->name('penjahit.contact');
+    Route::view('/penjahit/about', 'penjahit.about')->name('penjahit.about');
    
 });
 
@@ -54,10 +58,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/customer/orders', [CustomerController::class, 'orders'])->name('customer.orders');
     Route::post('/customer/order/{order}/payment', [CustomerController::class, 'uploadPayment'])->name('customer.uploadPayment');
 
-    Route::get('/penjahit', [TailorController::class, 'index'])->name('tailor.index');
-    Route::get('/tailor/profile', [TailorController::class, 'showProfile'])->name('tailor.showProfile');
-    Route::post('/tailor/profile', [TailorController::class, 'profile'])->name('tailor.profile');
-    Route::post('/tailor/order/{order}/status', [TailorController::class, 'updateStatus'])->name('tailor.updateStatus');
+    // Route::get('/penjahit', [TailorController::class, 'index'])->name('tailor.index');
+    // Route::get('/tailor/profile', [TailorController::class, 'showProfile'])->name('tailor.showProfile');
+    // Route::post('/tailor/profile', [TailorController::class, 'profile'])->name('tailor.profile');
+    // Route::post('/tailor/order/{order}/status', [TailorController::class, 'updateStatus'])->name('tailor.updateStatus');
 });
 
 Route::get('/order', function () {

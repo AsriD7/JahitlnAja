@@ -10,14 +10,14 @@ use Illuminate\Support\Facades\Hash;
 class ProfileController extends Controller
 {
     public function show() {
-        return view('pelanggan.lihatProfil', ['user' => Auth::user()]);
+        return view('profile.lihatProfil', ['user' => Auth::user()]);
     }
 
     public function edit() {
     $user = Auth::user();
     $profile = $user->profile;
 
-    return view('pelanggan.edit', compact('user', 'profile'));
+    return view('profile.edit', compact('user', 'profile'));
 }
 
     public function update(Request $request) {
@@ -46,7 +46,7 @@ class ProfileController extends Controller
     }
 
     public function passwordForm() {
-        return view('pelanggan.editPW');
+        return view('profile.editPW');
     }
 
     public function updatePassword(Request $request) {
