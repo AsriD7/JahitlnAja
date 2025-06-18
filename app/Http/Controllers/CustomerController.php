@@ -24,7 +24,7 @@ class CustomerController extends Controller
     public function index()
     {
         $categories = Category::with('services')->get();
-        $tailors = Tailor::with('user')->get();
+        $tailors = Tailor::with(['user', 'services'])->get(); // Ganti 'service' menjadi 'services'
         return view('pelanggan.order', compact('categories', 'tailors'));
     }
 
@@ -36,6 +36,12 @@ class CustomerController extends Controller
             'measurement' => 'required|string',
             'reference_image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
+
+        // Validasi bahwa tailor dapat menangani service
+        $tailor = Tailor::findOrFail($request->tailor_id);
+        if (!$tailor->services()->where('services.id', $request->service_id)->exists()) {
+            return back()->withErrors(['tailor_id' => 'Penjahit ini tidak dapat menangani layanan yang dipilih.']);
+        }
 
         DB::transaction(function () use ($request) {
             $service = Service::find($request->service_id);
@@ -56,6 +62,17 @@ class CustomerController extends Controller
         });
 
         return redirect()->route('customer.orders')->with('success', 'Order created successfully.');
+    }
+
+    public function getTailorsByService(Service $service)
+    {
+        $tailors = $service->tailors()->with('user')->get()->map(function ($tailor) {
+            return [
+                'id' => $tailor->id,
+                'user' => $tailor->user->name,
+            ];
+        });
+        return response()->json($tailors);
     }
 
     public function orders()
@@ -85,5 +102,36 @@ class CustomerController extends Controller
         });
 
         return redirect()->route('customer.orders')->with('success', 'Payment proof uploaded successfully.');
+    }
+
+    public function paymentInfo()
+{
+    $paymentDetails = [
+        'bank_name' => 'BCA',
+        'account_name' => 'Toko Jahit Profesional',
+        'account_number' => '1234567890',
+        'instructions' => 'Silakan transfer sesuai total harga pesanan. Upload bukti pembayaran di halaman Pesanan Saya setelah transfer.',
+    ];
+    return view('pelanggan.payment-info', compact('paymentDetails'));
+}
+
+    public function cancelOrder(Order $order)
+    {
+        if ($order->customer_id !== auth()->user()->id) {
+            return redirect()->route('customer.orders')->with('error', 'Unauthorized action.');
+        }
+
+        if ($order->status !== 'pending') {
+            return redirect()->route('customer.orders')->with('error', 'Hanya pesanan dengan status pending yang dapat dibatalkan.');
+        }
+
+        DB::transaction(function () use ($order) {
+            if ($order->reference_image) {
+                Storage::disk('public')->delete($order->reference_image);
+            }
+            $order->delete();
+        });
+
+        return redirect()->route('customer.orders')->with('success', 'Pesanan berhasil dibatalkan.');
     }
 }

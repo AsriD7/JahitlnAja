@@ -16,4 +16,8 @@ class Tailor extends Model
     {
         return $this->hasMany(Order::class);
     }
+    public function services()
+    {
+        return $this->belongsToMany(Service::class, 'service_tailors', 'tailor_id', 'service_id');
+    }
 }

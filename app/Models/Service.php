@@ -22,4 +22,9 @@ class Service extends Model
     {
         return $this->hasMany(Order::class);
     }
+
+    public function tailors()
+    {
+        return $this->belongsToMany(Tailor::class, 'service_tailors', 'service_id', 'tailor_id');
+    }
 }

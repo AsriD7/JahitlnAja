@@ -24,6 +24,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::put('/admin/users/{user}', [AdminController::class, 'updateUser'])->name('admin.users.update');
     Route::delete('/admin/users/{user}', [AdminController::class, 'destroyUser'])->name('admin.users.destroy');
     Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
+    // Rute untuk pengelolaan layanan
+    Route::get('/admin/services', [AdminController::class, 'services'])->name('admin.services');
+    Route::get('/admin/services/create', [AdminController::class, 'createService'])->name('admin.createService');
+    Route::post('/admin/services', [AdminController::class, 'storeService'])->name('admin.storeService');
+    Route::get('/admin/services/{service}/edit', [AdminController::class, 'editService'])->name('admin.editService');
+    Route::put('/admin/services/{service}', [AdminController::class, 'updateService'])->name('admin.updateService');
+    Route::delete('/admin/services/{service}', [AdminController::class, 'destroyService'])->name('admin.destroyService');
+
+    Route::get('/admin/orders', [AdminController::class, 'orders'])->name('admin.orders');
+    Route::post('/admin/order/{order}/verify', [AdminController::class, 'verifyPayment'])->name('admin.verifyPayment');
 });
 
 Route::middleware(['auth', 'role:penjahit'])->group(function () {
@@ -57,6 +67,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/customer/order', [CustomerController::class, 'createOrder'])->name('customer.createOrder');
     Route::get('/customer/orders', [CustomerController::class, 'orders'])->name('customer.orders');
     Route::post('/customer/order/{order}/payment', [CustomerController::class, 'uploadPayment'])->name('customer.uploadPayment');
+    Route::get('/services/{service}/tailors', [CustomerController::class, 'getTailorsByService'])->name('customer.getTailorsByService');
+    Route::delete('/customer/order/{order}/cancel', [CustomerController::class, 'cancelOrder'])->name('customer.cancelOrder');
+    Route::get('/payment-info', [CustomerController::class, 'paymentInfo'])->name('payment.info');
 
     // Route::get('/penjahit', [TailorController::class, 'index'])->name('tailor.index');
     // Route::get('/tailor/profile', [TailorController::class, 'showProfile'])->name('tailor.showProfile');
