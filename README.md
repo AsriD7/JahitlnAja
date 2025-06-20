@@ -22,12 +22,12 @@
 - Mengelola data pengguna (penjahit dan pelanggan).
 - Mengelola kategori dan layanan jahit.
 - verifikasi pembayaran
-- *(Catatan: Fitur verifikasi pembayaran dan ulasan belum diimplementasikan dalam kode saat ini, tetapi dapat ditambahkan di masa depan.)*
+- *(Catatan: Fitur ulasan belum diimplementasikan dalam kode saat ini, tetapi dapat ditambahkan di masa depan.)*
 
 ### 2. **Penjahit**
 - Mengelola profil penjahit (spesialisasi dan pengalaman).
 - Mengelola daftar layanan yang dikuasai (keahlian).
-- Memperbarui status pengerjaan pesanan (pending, accepted, in_progress, completed).
+- Memperbarui status pengerjaan pesanan (accepted, in_progress, completed).
 
 ### 3. **Pelanggan**
 - Registrasi dan login ke platform.
