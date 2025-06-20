@@ -1,61 +1,142 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<h1 align="center">JahitlnAja</h1>
+
+<h3 align="center">Platform Jasa Jahit Online</h3>
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="https://github.com/user-attachments/assets/191c51a4-97a2-451a-84ee-6e6527d81644" width="200" alt="Logo Universitas"/>
 </p>
 
-## About Laravel
+<h3 align="center">Asri</h3>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<h4 align="center">D0223532</h4>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<h4 align="center">Framework Web Based</h4>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<h4 align="center">2025</h4>
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## **Role dan Fitur-fiturnya**
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 1. **Admin**
+- Mengelola data pengguna (penjahit dan pelanggan).
+- Mengelola kategori dan layanan jahit.
+- verifikasi pembayaran
+- *(Catatan: Fitur verifikasi pembayaran dan ulasan belum diimplementasikan dalam kode saat ini, tetapi dapat ditambahkan di masa depan.)*
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 2. **Penjahit**
+- Mengelola profil penjahit (spesialisasi dan pengalaman).
+- Mengelola daftar layanan yang dikuasai (keahlian).
+- Memperbarui status pengerjaan pesanan (pending, accepted, in_progress, completed).
 
-## Laravel Sponsors
+### 3. **Pelanggan**
+- Registrasi dan login ke platform.
+- Melihat daftar kategori, layanan jahit, dan penjahit yang tersedia.
+- Membuat pesanan dengan memilih layanan, penjahit, serta mengunggah detail ukuran dan gambar referensi.
+- Mengunggah bukti pembayaran.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## **Tabel-Tabel Database beserta Field dan Tipe Datanya**
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### **Tabel: users**
 
-## Contributing
+| Nama Field         | Tipe Data  | Keterangan                           |
+|--------------------|------------|--------------------------------------|
+| id                 | BIGINT     | Primary key (auto increment)         |
+| name               | VARCHAR    | Nama pengguna                        |
+| email              | VARCHAR    | Email unik                           |
+| email_verified_at  | TIMESTAMP  | Waktu verifikasi email (nullable)    |
+| password           | VARCHAR    | Password hash                        |
+| role               | ENUM       | 'admin', 'penjahit', 'user' (default: 'user') |
+| remember_token     | VARCHAR    | Token untuk "remember me"            |
+| created_at         | TIMESTAMP  | Waktu dibuat                         |
+| updated_at         | TIMESTAMP  | Waktu diperbarui                     |
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### **Tabel: profiles**
 
-## Code of Conduct
+| Nama Field  | Tipe Data  | Keterangan                           |
+|-------------|------------|--------------------------------------|
+| id          | BIGINT     | Primary key (auto increment)         |
+| user_id     | BIGINT     | Foreign key ke users.id              |
+| phone       | VARCHAR    | Nomor telepon pengguna               |
+| address     | TEXT       | Alamat pengguna                      |
+| created_at  | TIMESTAMP  | Waktu dibuat                         |
+| updated_at  | TIMESTAMP  | Waktu diperbarui                     |
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### **Tabel: tailors**
 
-## Security Vulnerabilities
+| Nama Field      | Tipe Data  | Keterangan                           |
+|-----------------|------------|--------------------------------------|
+| id              | BIGINT     | Primary key (auto increment)         |
+| user_id         | BIGINT     | Foreign key ke users.id              |
+| specialization  | VARCHAR    | Spesialisasi penjahit (e.g., Atasan) |
+| experience      | INTEGER    | Pengalaman (tahun)                   |
+| created_at      | TIMESTAMP  | Waktu dibuat                         |
+| updated_at      | TIMESTAMP  | Waktu diperbarui                     |
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### **Tabel: categories**
 
-## License
+| Nama Field  | Tipe Data  | Keterangan                           |
+|-------------|------------|--------------------------------------|
+| id          | BIGINT     | Primary key (auto increment)         |
+| name        | VARCHAR    | Nama kategori (e.g., Atasan, Bawahan) |
+| created_at  | TIMESTAMP  | Waktu dibuat                         |
+| updated_at  | TIMESTAMP  | Waktu diperbarui                     |
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### **Tabel: services**
+
+| Nama Field    | Tipe Data  | Keterangan                           |
+|---------------|------------|--------------------------------------|
+| id            | BIGINT     | Primary key (auto increment)         |
+| category_id   | BIGINT     | Foreign key ke categories.id         |
+| name          | VARCHAR    | Nama layanan (e.g., Kemeja, Dress)   |
+| description   | TEXT       | Deskripsi layanan (nullable)         |
+| price         | DECIMAL(8,2) | Harga layanan                       |
+| created_at    | TIMESTAMP  | Waktu dibuat                         |
+| updated_at    | TIMESTAMP  | Waktu diperbarui                     |
+
+### **Tabel: orders**
+
+| Nama Field       | Tipe Data  | Keterangan                           |
+|------------------|------------|--------------------------------------|
+| id               | BIGINT     | Primary key (auto increment)         |
+| customer_id      | BIGINT     | Foreign key ke users.id (pelanggan)  |
+| tailor_id        | BIGINT     | Foreign key ke tailors.id            |
+| service_id       | BIGINT     | Foreign key ke services.id           |
+| measurement      | TEXT       | Detail ukuran pakaian                |
+| reference_image  | VARCHAR    | Path gambar referensi (nullable)     |
+| total_price      | DECIMAL(8,2) | Total harga pesanan                 |
+| status           | VARCHAR    | Status: pending, accepted, in_progress, completed |
+| payment_proof    | VARCHAR    | Path bukti pembayaran (nullable)     |
+| created_at       | TIMESTAMP  | Waktu dibuat                         |
+| updated_at       | TIMESTAMP  | Waktu diperbarui                     |
+
+### **Tabel: service_tailor**
+
+| Nama Field  | Tipe Data  | Keterangan                           |
+|-------------|------------|--------------------------------------|
+| id          | BIGINT     | Primary key (auto increment)         |
+| tailor_id   | BIGINT     | Foreign key ke tailors.id            |
+| service_id  | BIGINT     | Foreign key ke services.id           |
+| created_at  | TIMESTAMP  | Waktu dibuat                         |
+| updated_at  | TIMESTAMP  | Waktu diperbarui                     |
+
+---
+
+## **Jenis Relasi dan Tabel yang Berelasi**
+
+- **One-to-One**:
+  - `users` → `profiles`: Satu pengguna memiliki satu profil (phone, address).
+  - `users` → `tailors`: Satu pengguna (dengan role 'penjahit') memiliki satu data penjahit (specialization, experience).
+
+- **One-to-Many**:
+  - `users` → `orders`: Satu pengguna (pelanggan) dapat memiliki banyak pesanan (via customer_id).
+  - `tailors` → `orders`: Satu penjahit dapat menangani banyak pesanan (via tailor_id).
+  - `categories` → `services`: Satu kategori dapat memiliki banyak layanan.
+  - `services` → `orders`: Satu layanan dapat digunakan dalam banyak pesanan.
+
+- **Many-to-Many**:
+  - `tailors` ↔ `services`: Satu penjahit dapat menguasai banyak layanan, dan satu layanan dapat ditangani oleh banyak penjahit, dihubungkan melalui tabel pivot `service_tailor`.
+
+---
